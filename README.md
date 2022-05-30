@@ -13,19 +13,20 @@ API para controle de tarefas com sistema de login por usuário
 ## Como instalar?
 
 ```bash
-sudo pip install -r requirements.txt # install pythom modules
-./start.sh # execute server
+1. sudo
+2. pip install -r requirements.txt # install pythom modules
+3. flask run --host=0.0.0.0 --port=80 # execute server
 ```
 
 
 # Rotas 
 
-> Documentação para testes local.
+> Documentação para testes :D
 ## Autenticação
 
 **Cadastro de usuário**
 
-> [ POST ] http://localhost:5000/auth/register
+> [ POST ] http://144.126.213.60/auth/register
 
 -> Exemplo de body
 ```json
@@ -36,7 +37,7 @@ sudo pip install -r requirements.txt # install pythom modules
 
 **Autenticar usuário**
 
-> [ POST ] http://localhost:5000/auth/login
+> [ POST ] http://144.126.213.60/auth/login
 
 -> Exemplo de body
 ```json
@@ -59,11 +60,11 @@ sudo pip install -r requirements.txt # install pythom modules
 
 **Puxar informações completa do usuário**
 
-> [ GET ] http://localhost:5000/profile
+> [ GET ] http://144.126.213.60/profile
 
 **Criar tarefa**
 
-> [ POST ] http://localhost:5000/tasks
+> [ POST ] http://144.126.213.60/tasks
 
 -> Exemplo de body
 ```json
@@ -76,7 +77,7 @@ sudo pip install -r requirements.txt # install pythom modules
 
 **Editar tarefa**
 
-> [ PUT ] http://localhost:5000/tasks/{task_id}
+> [ PUT ] http://144.126.213.60/tasks/{task_id}
 
 -> Exemplo de body
 ```json
@@ -89,11 +90,11 @@ sudo pip install -r requirements.txt # install pythom modules
 
 **Deletar tarefa**
 
-> [ DELETE ] http://localhost:5000/tasks/{task_id}
+> [ DELETE ] http://144.126.213.60/tasks/{task_id}
 
 **Listar tarefas**
 
-> [ GET ] http://localhost:5000/tasks
+> [ GET ] http://144.126.213.60/tasks
 
 **Consultar tarefa especifica**
-> [ GET ] http://localhost:5000/tasks/{task_id}
+> [ GET ] http://144.126.213.60/tasks/{task_id}
