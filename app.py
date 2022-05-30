@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
 from models import db, UserModel, TaskModel
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_cors import CORS
 
 from utils import httpResponse
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["JWT_EXPIRE_DAYS"] = 7
 app.config["SECRET_KEY"] = "123456"
@@ -18,6 +20,12 @@ db.init_app(app)
 @app.before_first_request
 def create_table():
   db.create_all()
+
+# rota de testes <
+@app.get("/users")
+def getAllUsers():
+  users = UserModel.query.all()    
+  return httpResponse(users)
 
 @app.post("/auth/login")
 def authLogin():
