@@ -145,12 +145,15 @@ def deleteTask(id):
 def userProfile():
   userId = get_jwt_identity()
 
-  profile = UserModel.query.filter_by(id=userId).first()
+  user = UserModel.query.filter_by(id=userId).first()
   tasks = TaskModel.query.filter_by(user_id=userId).all()
 
-  profile.tasks = tasks
+  responseObject = {
+    "username": user.username,
+    "tasks": tasks
+  }
 
-  return httpResponse(profile, 200)
+  return httpResponse(responseObject, 200)
 
 @app.put('/users')
 @jwt_required()
@@ -174,4 +177,5 @@ def delete():
 
   return httpResponse({}, 204)
 
-app.run(host='localhost', port=5000)
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=80)

@@ -1,24 +1,28 @@
 # Gerenciamento de tarefas ( Python )
 
 ## Descrição
+
 API para controle de tarefas com sistema de login por usuário 
 
 ## Ferramentas utilizadas
+
 - Flask
 - SQLite ( db local )
 - JWT
 
 ## Como instalar?
-```bash
-pip install -r requirements.txt
 
-flask run
+```bash
+sudo pip install -r requirements.txt # install pythom modules
+./start.sh # execute server
 ```
 
 
-## Rotas 
+# Rotas 
+
 > Documentação para testes local.
-### Autenticação
+## Autenticação
+
 **Cadastro de usuário**
 
 > [ POST ] http://localhost:5000/auth/register
@@ -49,12 +53,13 @@ flask run
 
 ```
 
-### Rotas autenticadas ( Gerenciar tarefas / Perfil do usuário)
+## Rotas autenticadas ( Gerenciar tarefas / Perfil do usuário)
+
 > Necessário passar token JWT de acesso. 
 
 **Puxar informações completa do usuário**
 
-> [ GET ] http://localhost:5000/users/profile
+> [ GET ] http://localhost:5000/profile
 
 **Criar tarefa**
 
