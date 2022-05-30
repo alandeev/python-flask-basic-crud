@@ -19,11 +19,6 @@ db.init_app(app)
 def create_table():
   db.create_all()
 
-@app.get('/users')
-def index():
-  users = UserModel.query.all()
-  return jsonify(users)
-
 @app.post("/auth/login")
 def authLogin():
   username = request.json['username']
@@ -87,6 +82,22 @@ def createTask():
   db.session.commit()
 
   return httpResponse(task, 201)
+
+@app.get('/tasks/<string:id>')
+@jwt_required()
+def getTask(id):
+  task = TaskModel.query.filter_by(id=id).first()
+  if(not task):
+    responseError = { "message": "Task not found" }
+    return httpResponse(responseError, 404)
+
+  userId = get_jwt_identity()
+
+  if(task.user_id != userId):
+    responseError = { "message": "Task not found" }
+    return httpResponse(responseError, 403)
+
+  return httpResponse(task)
 
 @app.put('/tasks/<string:id>')
 @jwt_required()
