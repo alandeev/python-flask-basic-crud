@@ -22,6 +22,18 @@ API para controle de tarefas com sistema de login por usuário
 # Rotas 
 
 > Documentação para testes :D
+## Chat BOT 
+
+**Enviar perguntar**
+
+> [ POST ] http://144.126.213.60/chat_bot
+
+-> Exemplo de body
+```json
+{
+  "content": "message"
+}
+```
 ## Autenticação
 
 **Cadastro de usuário**
