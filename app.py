@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from chat_bot import ask_bot
 from models import db, UserModel, TaskModel
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_cors import CORS
@@ -184,6 +185,18 @@ def delete():
   db.session.commit()
 
   return httpResponse({}, 204)
+
+@app.post('/chat_bot')
+def chat_bot():
+  content = request.json['content']
+  answer = ask_bot(content)
+
+  responseObject = {
+    "awsrer": answer
+  }
+
+  return httpResponse(responseObject, 200) 
+  
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=80)
